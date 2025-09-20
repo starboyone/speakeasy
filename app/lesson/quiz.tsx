@@ -50,7 +50,6 @@ export const Quiz = ({initialLessonId, initialPercentage, initialHearts, initial
     const [incorrectAudio, _i, incorrectControls] = useAudio({src: "/incorrect.mp3"});
     const [finishedAudio, _f, finishControls] = useAudio({src: "/toothless-dancing.mp3"});
     const [heartsMissingAudio, _h, heartMissingControls] = useAudio({src: "/hearts-missing.mp3"});
-    const [hearAudio, _, hearControls] = useAudio({src: "/en_dear.mp3"}); // TODO: change hardcode
     const[pending, startTransition] = useTransition();
 
     const [lessonId] = useState(initialLessonId);
@@ -73,6 +72,17 @@ export const Quiz = ({initialLessonId, initialPercentage, initialHearts, initial
 
     const challenge = challenges[activeIndex];
     const options = challenge?.challengeOptions ?? [];
+    var hear_src = "";
+    
+    options.map((option) => {
+        if(option.correct === true) {
+            hear_src = option.audioSrc ?? "";   
+        }
+    })
+
+    const [hearAudio, _, hearControls] = useAudio({src: hear_src});     
+
+    
 
     const onSelect = (id: number) => {
         if(status !== "none") return;
@@ -143,10 +153,10 @@ export const Quiz = ({initialLessonId, initialPercentage, initialHearts, initial
         finishControls.play();
         return(
             <>
-                <Confetti recycle={true} numberOfPieces={100} tweenDuration={10000} width={width} height={height}/>
+                <Confetti recycle={true} numberOfPieces={80} tweenDuration={10000} width={width} height={height}/>
                 {finishedAudio}
                 <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
-                    <Image src="/toothless-dancing.gif" alt="Toothless" width={250} height={250}/>
+                    <Image src="/muddu-dance.gif" alt="Muddu" width={250} height={250}/>
                     <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
                         Отличная работа! 
                     </h1>

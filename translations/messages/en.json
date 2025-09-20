@@ -1,0 +1,48 @@
+{
+    "Marketing": {
+            "welcome": "Learn, practice and master your Engligh with SpeakEasy.",
+            "continue": "Continue learning",
+            "start": "Start learning!",
+            "already": "I already have an account",
+            "Footer": {
+                "ru": "Russian",
+                "en": "English"
+            }
+    },
+    "Sidebar": {
+        "learn": "Learn",
+        "leaderboard": "Leaderboard",
+        "quests": "Quests",
+        "shop": "Shop",
+        "admin": "Admin",
+        "profile": "Profile",
+        "settings": "Settings"
+    },
+    "Leaderboard":{
+        "title": "Leaderboard",
+        "description": "See how you rank among other students."
+    },
+    "Quests":{
+        "title": "Quests",
+        "description": "Complete quests to earn points.",
+        "completed": "Completed",
+        "locked": "New quests will be available soon"
+    },
+    "Settings":{
+        "appearance": "Appearance",
+        "language": "Interface language",
+        "switch": "Switch to Russian",
+        "account": "Account",
+        "logout": "Logout",
+        "ToggleTheme": {
+            "dark": "Dark theme",
+            "light": "Light Theme",
+            "default": "By default"
+        }
+    },
+    "Learn":{
+        "LessonButton": {
+            "start": "Start"
+        }
+    }
+}

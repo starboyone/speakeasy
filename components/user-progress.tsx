@@ -20,26 +20,7 @@ export const UserProgress = async ({ hearts, points, diamonds, activeCourses }: 
 
     return (
         <div className="flex items-center justify-between gap-x-2 w-full">
-            <NavigationMenuUserProgress title={activeCourses.title} imgSrc={activeCourses.imgSrc} courses={coursesList}/>
-            <Link href="/shop">
-                <Button variant="ghost" className="text-rose-500">
-                    {hearts}
-                    <Image src="/heart.svg" height={25} width={25} alt="Heart" className="mx-1"/>  
-                </Button>
-            </Link>
-            <Link href="/shop">
-                <Button variant="ghost" className="text-yellow-500">
-                    {points}
-                    <Image src="/coin.svg" height={25} width={25} alt="Coin" className=""/> 
-                </Button>
-            </Link>
-            {/* TODO: add crystals for shop*/}
-            <Link href="/shop">
-                <Button variant="ghost" className="text-sky-500">
-                    {diamonds}
-                    <Image src="/diamond.svg" height={20} width={20} alt="Diamond" className="mx-1"/> 
-                </Button>
-            </Link>
+            <NavigationMenuUserProgress title={activeCourses.title} imgSrc={activeCourses.imgSrc} courses={coursesList} activeId={activeCourses.id} diamonds={diamonds} points={points} hearts={hearts}/>
         </div>
     );
 };

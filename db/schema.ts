@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { integer, boolean, pgEnum, pgTable, serial, text } from "drizzle-orm/pg-core";
+import { integer, boolean, pgEnum, pgTable, serial, text, date } from "drizzle-orm/pg-core";
 
 export const courses = pgTable("courses",{
     id: serial("id").primaryKey(),
@@ -97,6 +97,8 @@ export const userProgress = pgTable("user_progress", {
     userId: text("user_id").primaryKey(),
     userName: text("user_name").notNull().default("User"),
     userImgSrc: text("user_img_src").notNull().default("/mascot.svg"),
+    status: text("status").notNull().default("none"),
+    registrationDate: text("registration_date").notNull().default("01.01.2024"), 
     activeCourseId: integer("active_course_id").references(() => courses.id, { onDelete: "cascade"}),
     hearts: integer("hearts").notNull().default(5),
     points: integer("points").notNull().default(0),

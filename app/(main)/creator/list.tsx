@@ -2,16 +2,25 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "./card";
-import { createElement } from "react";
-import { index } from "drizzle-orm/mysql-core";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import ReactCardFlip from "react-card-flip";
+import Image from "next/image";
+import { useCreateChallengeModal } from "@/store/use-create-challenge-modal";
+
+const listCard = ['1', '2'];
 
 export const List = () => {
-    const onClick = () => {
-        console.log("clicked");
+
+    const [isFlippepd, setIsFlippepd] = useState(false);
+
+    const handleClick = () => {
+        setIsFlippepd(!isFlippepd);
     }
 
+    const { open } = useCreateChallengeModal();
+    
     return (
         
         <div>
@@ -27,15 +36,29 @@ export const List = () => {
                         </div>
                 </div>  
             </div>
-            <Card id={1}/>
-            <Card id={2}/>
-            <Card id={3}/>
-            <Card id={4}/>
-            <Card id={5}/>
+
+            {listCard.map((id) => (
+                <Card key={id} id={id}/>
+            ))}
             
-            <Button variant="super" className="w-full h-[110px]" onClick={onClick}>
-                + Add card
+            <Button variant="super" className="w-full h-[110px]" onClick={open}>
+                Add challenge
             </Button>
+
+            <ReactCardFlip isFlipped={isFlippepd} flipDirection="vertical">
+                <div onClick={handleClick} className="font-bold w-[400px] h-[200px] border-2 rounded-xl hover:cursor-pointer flex items-center justify-center">
+                    Яблоко
+                </div>
+
+                <div onClick={handleClick} className="font-bold w-[400px] h-[200px] border-2 rounded-xl hover:cursor-pointer flex items-center justify-center gap-x-16">
+                    <div>
+                        Apple
+                    </div>
+                    <div> 
+                        <Image src="/apple.svg" height={100} width={100} alt="Apple"/>
+                    </div>
+                </div>
+            </ReactCardFlip>
 
             <div className="w-full flex items-center justify-end my-4">
                 <Button variant="secondary" size="lg">

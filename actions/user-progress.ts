@@ -32,8 +32,8 @@ export const upsertUserProgress = async (courseId: number) => {
     if(existingUserProgress){
         await db.update(userProgress).set({
             activeCourseId: courseId,
-            userName: user.firstName || "User",
-            userImgSrc: user.imageUrl || "/mascot.svg",
+            //userName: user.firstName || "User",
+            //userImgSrc: user.imageUrl || "/mascot.svg",
         })
 
         revalidatePath("/courses");
@@ -41,11 +41,15 @@ export const upsertUserProgress = async (courseId: number) => {
         redirect("/learn");
     }
 
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('ru-RU');
+
     await db.insert(userProgress).values({
         userId,
         activeCourseId: courseId,
         userName: user.firstName || "User",
-        userImgSrc: user.imageUrl || "/mascot.svg"
+        userImgSrc: user.imageUrl || "/mascot.svg",
+        registrationDate: formattedDate
     })
 
     revalidatePath("/courses");

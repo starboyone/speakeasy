@@ -10,6 +10,29 @@ export const getCourses = cache(async () => {
     return data;
 })
 
+export const addLesson = cache(async (title: string) => {
+    const { userId } = await auth();
+
+    if(!userId){
+        return [];
+    }
+    try{
+        await db.insert(lessons).values([
+            {
+                title: title,
+                unitId: 2,
+                order: 1
+            }
+        ])
+    }
+    catch(error){
+        console.error(error);
+        throw new Error("Failed to add lesson");
+    }
+
+    return [];
+})
+
 export const getUnits = cache(async () => {
     const { userId } = await auth();
     const userProgress = await getUserProgress();
@@ -185,4 +208,26 @@ export const getLessonPercentage = cache(async () => {
     const percentage = Math.round((completedChallenges.length / lesson.challenges.length) * 100)
 
     return percentage;
+})
+
+export const getTopTenUsers = cache(async () => {
+    const { userId } = await auth();
+
+    if(!userId){
+        return [];
+    }
+    
+    const data = await db.query.userProgress.findMany({
+        orderBy: (userProgress, {desc}) => [desc(userProgress.points)],
+        limit: 10,
+        columns: {
+            userId: true,
+            userName: true,
+            userImgSrc: true,
+            points: true,
+            status: true,
+        }
+    })
+
+    return data;
 })

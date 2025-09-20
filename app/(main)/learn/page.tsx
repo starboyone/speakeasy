@@ -6,9 +6,10 @@ import { UserProgress } from "@/components/user-progress";
 import { Quests } from "@/components/quests";
 import { getCourseProgress, getLessonPercentage, getUnits, getUserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
-import { Promo } from "@/components/promo";
+import { Rating } from "@/components/rating";
 import { Unit } from "./unit";
 import { lessons, units as unitsSchema } from "@/db/schema";
+import { ButtonToTop } from "./button-to-top";
 
 const LearnPage = async () => {
     const userProgressData = getUserProgress();
@@ -40,7 +41,7 @@ const LearnPage = async () => {
         <div className="flex flex-row-reverse gap-[48px] px-6">
             <StickyWrapper>
                 <UserProgress hearts={userProgress.hearts} points={userProgress.points} diamonds={userProgress.diamonds} activeCourses={userProgress.activeCourse}/>
-                <Promo/>
+                <Rating/>
                 <Quests points={userProgress.points}/>
             </StickyWrapper>
             <FeedWrapper>
@@ -50,6 +51,7 @@ const LearnPage = async () => {
                         <Unit id={unit.id} title={unit.title} description={unit.description} order={unit.order} lessons={unit.lessons} activeLesson={courseProgress.activeLesson as typeof lessons.$inferSelect & {unit: typeof unitsSchema.$inferSelect} | undefined} activeLessonPercentage={lessonPercentage} />
                     </div>
                 ))}
+                <ButtonToTop/>
             </FeedWrapper>
         </div>
     )

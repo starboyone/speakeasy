@@ -28,12 +28,12 @@ const ShopPage = async () => {
                 <div className="w-full flex flex-col items-center">
                     <Image src="/shop.svg" height={90} width={90} alt="Shop" />
                     <h1 className="text-center font-bold text-2xl text-neutral-800 my-6">
-                        Shop
+                        Магазин
                     </h1>
                     <p className="text-center text-muted-foreground text-lg mb-6">
-                        Spend your points for customize your app.
+                        Потратьте свои баллы на настройку своего приложения.
                     </p>
-                    {/* <Items hearts={userProgress.hearts} points={userProgress.points} hasActiveSubscription={false}/> */}
+                    <Items hearts={userProgress.hearts} points={userProgress.points} diamonds={userProgress.diamonds}/>
                 </div>
             </FeedWrapper>
         </div>

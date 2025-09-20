@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+These are web-based application for learning English.  
+The application interface is similar to [Duolingo](https://www.duolingo.com/).   
+The application was created for teaching web programming technologies.
 
 ## Getting Started
 

@@ -23,24 +23,35 @@ const main = async () => {
         await db.insert(schema.courses).values([
             {
                 id: 1,
-                title: "English",
+                title: "Begginer A1",
                 imgSrc: "/gb.svg"
             },
             {
                 id: 2,
-                title: "Spanish",
-                imgSrc: "/es.svg"
+                title: "Elementary A2",
+                imgSrc: "/gb.svg"
             },
             {
                 id: 3,
-                title: "Japanese",
-                imgSrc: "/jp.svg"
+                title: "Intermediate B1",
+                imgSrc: "/gb.svg"
             },
             {
                 id: 4,
-                title: "Chinese",
-                imgSrc: "/cn.svg"
+                title: "Upper-Intermediate B2",
+                imgSrc: "/gb.svg"
             },
+            {
+                id: 5,
+                title: "Advanced C1",
+                imgSrc: "/gb.svg"
+            },
+            {
+                id: 6,
+                title: "Proficiency C2",
+                imgSrc: "/gb.svg"
+            },
+
         ])
 
         await db.insert(schema.units).values([
@@ -55,7 +66,14 @@ const main = async () => {
                 id: 2,
                 courseId: 1,
                 title: "Unit 2",
-                description: "Learn the basics of English",
+                description: "Learn the basics 2 of English",
+                order: 2
+            },
+            {
+                id: 3,
+                courseId: 2,
+                title: "Unit 1",
+                description: "Learn the next stage of English",
                 order: 1
             }
         ])
@@ -77,19 +95,25 @@ const main = async () => {
                 id: 3,
                 unitId: 1,
                 order: 3,
-                title: "Verbs"
+                title: "Verbs 2"
             },
             {
                 id: 4,
                 unitId: 1,
                 order: 4,
-                title: "Verbs"
+                title: "Verbs 3"
             },
             {
                 id: 5,
                 unitId: 1,
                 order: 5,
-                title: "Verbs"
+                title: "Verbs 4"
+            },
+            {
+                id: 6,
+                unitId: 2,
+                order: 1,
+                title: "Professions"
             },
         ])
 
