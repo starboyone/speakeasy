@@ -1,36 +1,51 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-export default clerkMiddleware((auth, request) => {
-  // 2. Обработка языка без префиксов в URL
-  const cookieLang = request.cookies.get('i18n_lang')?.value || 'ru';
-  const pathname = request.nextUrl.pathname;
+export default clerkMiddleware(async (auth, req) => {
+  const request = req; // Переименовываем для consistency
+  
+  // 1. Пропускаем статические файлы и API routes для Clerk
+  if (req.nextUrl.pathname.includes('.') || 
+      req.nextUrl.pathname.startsWith('/api/') ||
+      req.nextUrl.pathname.startsWith('/_next/')) {
+    return NextResponse.next();
+  }
 
-  // Удаляем языковые префиксы, если они есть (редирект на чистый URL)
-  if (['/ru', '/en'].includes(pathname) || pathname.startsWith('/ru/') || pathname.startsWith('/en/')) {
-    const newPath = pathname.replace(/^\/(ru|en)/, '') || '/';
-    const newUrl = new URL(newPath, request.url);
+  // 2. Получаем язык из cookie или устанавливаем по умолчанию
+  const cookieLang = req.cookies.get('i18n_lang')?.value || 'ru';
+  const pathname = req.nextUrl.pathname;
+
+  // 3. Обработка языковых префиксов - только если это не редирект от Clerk
+  if (['/ru', '/en'].includes(pathname) || 
+      pathname.startsWith('/ru/') || 
+      pathname.startsWith('/en/')) {
     
-    const response = NextResponse.redirect(newUrl);
-    // Обновляем cookie только если язык в URL отличается
     const urlLang = pathname.split('/')[1];
+    const newPath = pathname.replace(/^\/(ru|en)/, '') || '/';
+    
+    // Создаем response
+    const response = NextResponse.redirect(new URL(newPath, req.url));
+    
+    // Обновляем cookie только если язык изменился
     if (urlLang !== cookieLang) {
       response.cookies.set('i18n_lang', urlLang, {
         path: '/',
         sameSite: 'lax',
-        httpOnly: true
+        httpOnly: true,
+        maxAge: 365 * 24 * 60 * 60 // 1 год
       });
     }
     return response;
   }
 
-  // 3. Устанавливаем язык в cookie, если его нет
-  if (!request.cookies.has('i18n_lang')) {
+  // 4. Устанавливаем язык в cookie если его нет
+  if (!req.cookies.has('i18n_lang')) {
     const response = NextResponse.next();
     response.cookies.set('i18n_lang', cookieLang, {
       path: '/',
       sameSite: 'lax',
-      httpOnly: true
+      httpOnly: true,
+      maxAge: 365 * 24 * 60 * 60
     });
     return response;
   }
@@ -41,8 +56,6 @@ export default clerkMiddleware((auth, request) => {
 
 export const config = {
   matcher: [
-    '/((?!.+\\.[\\w]+$|_next).*)', // Исключаем файлы и _next
-    '/',                            // Главная страница
-    '/(api|trpc)(.*)',              // API маршруты
+    '/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)',
   ],
 };
