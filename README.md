@@ -2,30 +2,28 @@ These are web-based application for learning English.
 The application interface is similar to [Duolingo](https://www.duolingo.com/).   
 The application was created for teaching web programming technologies.
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 ## 🎮 Live Demo
 
 Don't want to install? Just click and try it!
 
 <p align="center">
   <a href="https://speakeasy-e73u.vercel.app" target="_blank">
-    <img src="https://img.shields.io/badge/🚀_Запустить_Демо-FF7135?style=for-the-badge&logo=rocket&logoColor=white" alt="Demo launch" height="50"/>
+    <img src="https://img.shields.io/badge/🚀_Launch_Demo-FF7135?style=for-the-badge&logo=rocket&logoColor=white" alt="Demo launch" height="50"/>
   </a>
+</p>
+
+**Link access:** https://speakeasy-e73u.vercel.app
+
+## 📸 Screenshots
+
+### Welcome screen
+<p align="center">
+  <img src="assets/img/welcome_screen.png" alt="Welcome screen" width="400"/>
+</p>
+
+### Home screen
+<p align="center">
+  <img src="assets/img/home_screen.png" alt="Home screen" width="400"/>
 </p>
 
 ## 📞 Contact
