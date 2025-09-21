@@ -1,15 +1,15 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-export default clerkMiddleware((auth, request) => {
+export default clerkMiddleware((auth, req) => {
   // 2. Обработка языка без префиксов в URL
-  const cookieLang = request.cookies.get('i18n_lang')?.value || 'ru';
-  const pathname = request.nextUrl.pathname;
+  const cookieLang = req.cookies.get('i18n_lang')?.value || 'ru';
+  const pathname = req.nextUrl.pathname;
 
   // Удаляем языковые префиксы, если они есть (редирект на чистый URL)
   if (['/ru', '/en'].includes(pathname) || pathname.startsWith('/ru/') || pathname.startsWith('/en/')) {
     const newPath = pathname.replace(/^\/(ru|en)/, '') || '/';
-    const newUrl = new URL(newPath, request.url);
+    const newUrl = new URL(newPath, req.url);
     
     const response = NextResponse.redirect(newUrl);
     // Обновляем cookie только если язык в URL отличается
@@ -25,7 +25,7 @@ export default clerkMiddleware((auth, request) => {
   }
 
   // 3. Устанавливаем язык в cookie, если его нет
-  if (!request.cookies.has('i18n_lang')) {
+  if (!req.cookies.has('i18n_lang')) {
     const response = NextResponse.next();
     response.cookies.set('i18n_lang', cookieLang, {
       path: '/',

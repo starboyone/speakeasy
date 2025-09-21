@@ -2,37 +2,41 @@ These are web-based application for learning English.
 The application interface is similar to [Duolingo](https://www.duolingo.com/).   
 The application was created for teaching web programming technologies.
 
-## Getting Started
+## 🛠️ Technology stack
 
-First, run the development server:
+**Next.js 14**   
+**Typescript**   
+**Tailwind CSS**  
+**Neon + PostgreSQL**    
+**Clerk Auth**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎮 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Don't want to install? Just click and try it!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<p align="center">
+  <a href="https://speakeasy-e73u.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/🚀_Launch_Demo-FF7135?style=for-the-badge&logo=rocket&logoColor=white" alt="Demo launch" height="50"/>
+  </a>
+</p>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Link access:** https://speakeasy-e73u.vercel.app
 
-## Learn More
+## 📸 Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+### Welcome screen
+<p align="center">
+  <img src="assets/img/welcome_screen.png" alt="Welcome screen" width="400"/>
+</p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Home screen
+<p align="center">
+  <img src="assets/img/home_screen.png" alt="Home screen" width="400"/>
+</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 📞 Contact
+Alex \\
+Telegram - [@digital1style](https://t.me/digital1style) \\
+Email - otriputin@gmail.com \\
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Project: https://github.com/starboyone/speakeasy
