@@ -18,6 +18,16 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## 🎮 Live Demo
+
+Don't want to install? Just click and try it!
+
+<p align="center">
+  <a href="https://speakeasy-e73u.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/🚀_Запустить_Демо-FF7135?style=for-the-badge&logo=rocket&logoColor=white" alt="Demo launch" height="50"/>
+  </a>
+</p>
+
 ## 📞 Contact
 Alex \\
 Telegram - [@digital1style](https://t.me/digital1style) \\
