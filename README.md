@@ -19,6 +19,8 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## 📞 Contact
-Alex
-Telegram - [@digital1style](https://t.me/digital1style)
-Email - [otriputin@gmail.com]
+Alex \\
+Telegram - [@digital1style](https://t.me/digital1style) \\
+Email - otriputin@gmail.com \\
+
+Project: https://github.com/starboyone/speakeasy
